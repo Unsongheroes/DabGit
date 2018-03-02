@@ -1,15 +1,25 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace HandIn2._1
+﻿namespace HandIn2._1
 {
     public class Adresse
     {
-        [Key]
-        public string Adressen { get; set; }
+        private string _vejnavn;
+        private int _husnummer;
+        
+        public Adresse(string vejnavn, int husnummer,int postnummer, int PersonId)
+        {
+            Vejnavn(vejnavn);
+            Husnummer(husnummer);
+        }
 
-        public string Vejnavn { get; set; }
+        public string Vejnavn(string vejnavn)
+        {
+            return _vejnavn = vejnavn;
+        }
 
-        public int Husnummer { get; set; }
+        public int Husnummer(int husnummer)
+        {
+            return _husnummer = husnummer;
+        }
 
         public virtual ByPostnummer ByPostnummer { get; set; }
 

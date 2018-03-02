@@ -2,11 +2,30 @@
 {
     public class ByPostnummer
     {
-        public int PostNummer { get; set; }
+        private int _postnummer;
+        private string _byNavn;
+        private string _land;
+        
 
-        public string ByNavn { get; set; }
+        public ByPostnummer(int postnummer,string ByNavn,string land)
+        {
+            PostNummer(postnummer);
+        }
 
-        public string Land { get; set; }
+        public int PostNummer(int postnummer)
+        {
+            return _postnummer = postnummer;
+        }
+
+        public string ByNavn(string bynavn)
+        {
+           return _byNavn = bynavn;
+        }
+
+        public string Land(string land)
+        {
+            return _land = land;
+        }
 
         public virtual Person Person { get; set; }
 

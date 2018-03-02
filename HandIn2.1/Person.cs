@@ -9,11 +9,11 @@ namespace HandIn2._1
     public class Person
     {
         private int _cpr;
-        private string _fornavn = "";
-        private string _mellemnavn = "";
-        private string _efternavn = "";
-        private string _personType = "";
-        private string _eMail = "";
+        private string _fornavn;
+        private string _mellemnavn;
+        private string _efternavn;
+        private string _personType;
+        private string _eMail;
 
         public Person(int cpr, string fornavn, string efternavn, string personType, string email = "", string mellemnavn = "")
         {

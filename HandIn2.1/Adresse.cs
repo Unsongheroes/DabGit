@@ -7,7 +7,7 @@ namespace HandIn2._1
         private string _vejnavn;
         private int _husnummer;
         
-        public Adresse(string vejnavn, int husnummer, ByPostnummer byPost)
+        public Adresse(string vejnavn, int husnummer, List<ByPostnummer> byPost)
         {
             Vejnavn(vejnavn);
             Husnummer(husnummer);
@@ -24,7 +24,7 @@ namespace HandIn2._1
             return _husnummer = husnummer;
         }
 
-        public virtual ByPostnummer ByPostnummer { get; set; }
+        public virtual List<ByPostnummer> ByPostnummer { get; set; }
         
         public virtual List<Person> Persons { get; set; }
 

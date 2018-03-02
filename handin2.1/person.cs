@@ -16,7 +16,7 @@ namespace HandIn2._1
         private string _eMail;
         private List<Adresse> _adresses;
 
-        public Person(int cpr, string fornavn, string efternavn, string personType, string email = "", string mellemnavn = "")
+        public Person(int cpr, string fornavn, string efternavn,TelefonNummer tlfNummer, string personType,List<Adresse> adresses, string email = "", string mellemnavn = "")
         {
             _adresses = adresses;
             PersonId(cpr);
@@ -26,7 +26,7 @@ namespace HandIn2._1
             PersonType(personType);
             EMail(email);
             TelefonNumre.Add(tlfNummer);
-            Adresses.Add(adresse);
+            
         }
         public int PersonId(int cpr)
         {

@@ -6,12 +6,14 @@ namespace HandIn2._1
     {
         private string _vejnavn;
         private int _husnummer;
+        private string _type;
         
-        public Adresse(string vejnavn, int husnummer, List<ByPostnummer> byPost)
+        public Adresse(string vejnavn, int husnummer, ByPostnummer byPost, string type)
         {
             Vejnavn(vejnavn);
             Husnummer(husnummer);
             ByPostnummer = byPost;
+            Type(type);
         }
 
         public string Vejnavn(string vejnavn)
@@ -24,7 +26,12 @@ namespace HandIn2._1
             return _husnummer = husnummer;
         }
 
-        public virtual List<ByPostnummer> ByPostnummer { get; set; }
+        public string Type(string type)
+        {
+            return _type = type;
+        }
+
+        public virtual ByPostnummer ByPostnummer { get; set; }
         
         public virtual List<Person> Persons { get; set; }
 

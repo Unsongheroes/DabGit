@@ -14,9 +14,11 @@ namespace HandIn2._1
         private string _efternavn;
         private string _personType;
         private string _eMail;
+        private List<Adresse> _adresses;
 
-        public Person(int cpr, string fornavn, string efternavn, string personType, string email = "", string mellemnavn = "")
+        public Person(int cpr, string fornavn, string efternavn, string personType, List<Adresse> adresses, string email = "", string mellemnavn = "")
         {
+            _adresses = adresses;
             PersonId(cpr);
             Fornavn(fornavn);
             Mellemnavn(mellemnavn);
@@ -56,7 +58,9 @@ namespace HandIn2._1
 
         public virtual List<TelefonNummer> TelefonNumre { get; set; }
 
-        public virtual List<Adresse> Adresses { get; set; }
-
+        public virtual ref List<Adresse> Adresses
+        {
+            get { return ref _adresses; }
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace HandIn2._1
+﻿using System.Collections.Generic;
+
+namespace HandIn2._1
 {
     public class ByPostnummer
     {
@@ -7,9 +9,11 @@
         private string _land;
         
 
-        public ByPostnummer(int postnummer,string ByNavn,string land)
+        public ByPostnummer(int postnummer,string byNavn,string land)
         {
             PostNummer(postnummer);
+            ByNavn(byNavn);
+            Land(land);
         }
 
         public int PostNummer(int postnummer)
@@ -27,8 +31,8 @@
             return _land = land;
         }
 
-        public virtual Person Person { get; set; }
+        public virtual List<Adresse> Adresses { get; set; }
 
-        public virtual int PersonId { get; set; }
+
     }
 }

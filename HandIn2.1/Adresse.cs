@@ -1,14 +1,17 @@
-﻿namespace HandIn2._1
+﻿using System.Collections.Generic;
+
+namespace HandIn2._1
 {
     public class Adresse
     {
         private string _vejnavn;
         private int _husnummer;
         
-        public Adresse(string vejnavn, int husnummer,int postnummer, int PersonId)
+        public Adresse(string vejnavn, int husnummer, ByPostnummer byPost)
         {
             Vejnavn(vejnavn);
             Husnummer(husnummer);
+            ByPostnummer = byPost;
         }
 
         public string Vejnavn(string vejnavn)
@@ -22,11 +25,10 @@
         }
 
         public virtual ByPostnummer ByPostnummer { get; set; }
+        
+        public virtual List<Person> Persons { get; set; }
 
-        public int Postnummer { get; set; }
-        public virtual Person Person { get; set; }
-
-        public int PersonId { get; set; }
+        
 
     }
 }

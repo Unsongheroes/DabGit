@@ -3,6 +3,13 @@
     public class TelefonNummer
     {
 
+        public TelefonNummer(int telefonNr, string type, string selskab = "")
+        {
+            Telefonnummer = telefonNr;
+            TelefonnummerType = type;
+            TelefonSelskab = TelefonSelskab;
+        }
+
         public int Telefonnummer { get; set; }
 
         public string TelefonnummerType { get; set; }
@@ -10,7 +17,6 @@
         public string TelefonSelskab { get; set; }
 
         public virtual Person Person { get; set; }
-
-        public int PersonId { get; set; }
+        
     }
 }

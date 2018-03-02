@@ -16,9 +16,10 @@ namespace HandIn2._1
         private string _eMail;
         private List<Adresse> _adresses;
 
-        public Person(int cpr, string fornavn, string efternavn, string personType, string email = "", string mellemnavn = "")
+        public Person(int cpr, string fornavn, string efternavn,TelefonNummer tlfNummer, string personType, string email = "", string mellemnavn = "")
         {
-            _adresses = adresses;
+            _adresses = new List<Adresse>();
+            TelefonNumre = new List<TelefonNummer>();
             PersonId(cpr);
             Fornavn(fornavn);
             Mellemnavn(mellemnavn);
@@ -26,7 +27,7 @@ namespace HandIn2._1
             PersonType(personType);
             EMail(email);
             TelefonNumre.Add(tlfNummer);
-            Adresses.Add(adresse);
+            
         }
         public int PersonId(int cpr)
         {
@@ -63,6 +64,16 @@ namespace HandIn2._1
         public virtual ref List<Adresse> Adresses
         {
             get { return ref _adresses; }
+        }
+
+        public void addAddress(Adresse adress)
+        {
+            _adresses.Add(adress);
+        }
+
+        public void print()
+        {
+            Console.WriteLine(_fornavn + " " + _efternavn );
         }
     }
 }

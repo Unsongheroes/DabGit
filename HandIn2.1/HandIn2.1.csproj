@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Adresse.cs" />
     <Compile Include="By_postnummer.cs" />
+    <Compile Include="JoinPersonAdresse.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelefonNummer.cs" />

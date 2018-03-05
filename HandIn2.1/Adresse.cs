@@ -32,6 +32,7 @@ namespace HandIn2._1
             JoinPersonAdresse.PersonAdresses.Add(tmp);
 
             _persons.Add(person);
+            person.Adresses.Add(this);
         }
 
         public virtual ByPostnummer ByPostnummer { get; set; }

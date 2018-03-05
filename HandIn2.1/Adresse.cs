@@ -24,6 +24,13 @@ namespace HandIn2._1
 
         public void AddPerson(Person person)
         {
+            item tmp = new item();
+            tmp.adresse = this;
+            tmp.person = person;
+            tmp.type = _type;
+
+            JoinPersonAdresse.PersonAdresses.Add(tmp);
+
             _persons.Add(person);
         }
 

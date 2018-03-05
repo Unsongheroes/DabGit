@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace HandIn2._1
 {
-    public class JoinPersonAdresse
+    public static class JoinPersonAdresse
     {
-        public JoinPersonAdresse()
-        {
+        public static List<item> PersonAdresses = new List<item>();
+    }
 
-        }
+    public class item
+    {
+        public string type { get; set; }
 
+        public Person person { get; set; }
+
+        public Adresse adresse { get; set; }
     }
 }

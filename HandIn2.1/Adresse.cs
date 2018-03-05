@@ -15,6 +15,7 @@ namespace HandIn2._1
             _vejnavn = vejnavn;
             _husnummer = husnummer;
             ByPostnummer = byPost;
+            byPost.AddAdress(this);
             _persons = new List<Person>();
             _type = type;
         }

@@ -10,9 +10,10 @@ namespace HandIn2._1.Application
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Tomt postnummer/by tilføjes Aarhus, 8000, Denmark.");
             ByPostnummer aarhus = new ByPostnummer(8000, "Aarhus", "Denmark");
-            Console.WriteLine("Empty postnummer::");
+            Console.WriteLine("Indeholder 0 adresser:");
+            var checkpoint = Console.ReadKey();
             aarhus.printAdresses();
 
 
@@ -21,34 +22,36 @@ namespace HandIn2._1.Application
             Adresse ad3 = new Adresse("Silkeborgvej", 24, aarhus, "Hjem");
             Adresse ad4 = new Adresse("Silkeborgvej", 25, aarhus, "Hjem");
 
-            Console.WriteLine("After adding 4 adresses: ");
+            Console.WriteLine("Tilføjelse af 4 adresser til postnummer via aarhus.printAdresses();:");
             aarhus.printAdresses();
+            checkpoint = Console.ReadKey();
 
+            Console.WriteLine("Tilføjer nyt telefonnummer samt en enkelt person til adresse Silkeborgvej 22:");
             TelefonNummer JensArbejd = new TelefonNummer(12345678,"Arbejd", "Telia");
-            Person Jens = new Person(11111900, "Jens", "Poulsen", JensArbejd, "Kollega","jens@gmail.com", "Peter");
-            Person Jens2 = new Person(11111901, "Jens2", "Poulsen2", JensArbejd, "Kollega", "jens2@gmail.com", "Peter2");
-            Person Jens3 = new Person(11111902, "Jens3", "Poulsen3", JensArbejd, "Kollega", "jens3@gmail.com", "Peter3");
-            Person Jens4 = new Person(11111903, "Jens4", "Poulsen4", JensArbejd, "Kollega", "jens4@gmail.com", "Peter4");
 
+            Person Jens = new Person(11111900, "Jens", "Poulsen", JensArbejd, "Kollega", ad1,"jens@gmail.com", "Peter");
 
+            Jens.print();
+            Jens.printPhone();
+            checkpoint = Console.ReadKey();
 
-            ad1.AddPerson(Jens);
-            ad1.AddPerson(Jens2);
-            ad1.AddPerson(Jens3);
-            ad1.AddPerson(Jens4);
+            Console.WriteLine("Tilføjer 3 personer til adresse Silkeborgvej 22:");
 
-            Jens.addAddress(ad1);
-            Jens2.addAddress(ad1);
-            Jens3.addAddress(ad1);
-            Jens4.addAddress(ad1);
+            Person Ditte = new Person(11111901, "Ditte", "Poulsen", JensArbejd, "Kollega", ad1);
+            Person Samuel = new Person(11111902, "Samuel", "Poulsen", JensArbejd, "Studerende", ad1);
+            Person Abdi = new Person(11111903, "Abdi", "Poulsen", JensArbejd, "Kontanthjælp", ad1,"jens4@gmail.com");
 
+            Console.WriteLine();
 
-            Console.WriteLine("The given address is: ");
+            Console.WriteLine("Den valgte adresse er:");
             ad1.PrintAdress();
-            Console.WriteLine("And is related to the following persons: ");
+            Console.WriteLine("Adressen indeholder følgende personer via ad1.PrintPersons():");
             ad1.PrintPersons();
 
+            checkpoint = Console.ReadKey();
+            Console.WriteLine("Ændring af Jens' efternavn til Larsen.");
             Jens.Efternavn("Larsen");
+            Console.WriteLine("Adressen indeholder følgende personer via ad1.PrintPersons():");
             ad1.PrintPersons();
 
 

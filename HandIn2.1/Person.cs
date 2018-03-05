@@ -16,10 +16,11 @@ namespace HandIn2._1
         private string _eMail;
         private List<Adresse> _adresses;
 
-        public Person(int cpr, string fornavn, string efternavn,TelefonNummer tlfNummer, string personType, string email = "", string mellemnavn = "")
+        public Person(int cpr, string fornavn, string efternavn,TelefonNummer tlfNummer, string personType, Adresse adresse, string email = "", string mellemnavn = "")
         {
             _adresses = new List<Adresse>();
             TelefonNumre = new List<TelefonNummer>();
+            addAddress(adresse, "primær");
             PersonId(cpr);
             Fornavn(fornavn);
             Mellemnavn(mellemnavn);
@@ -66,9 +67,17 @@ namespace HandIn2._1
             get { return ref _adresses; }
         }
 
-        public void addAddress(Adresse adress)
+        public void addAddress(Adresse adress, string type)
         {
+            item tmp = new item();
+            tmp.adresse = adress;
+            tmp.person = this;
+            tmp.type = type;
+
+
+            JoinPersonAdresse.PersonAdresses.Add(tmp);
             _adresses.Add(adress);
+            adress.Persons.Add(this);
         }
 
         public void print()
@@ -79,6 +88,15 @@ namespace HandIn2._1
             {
                 Console.WriteLine(_fornavn + " " + _mellemnavn + " " + _efternavn);
             }
+        }
+
+        public void printPhone()
+        {
+            foreach (var VARIABLE in TelefonNumre)
+            {
+                Console.WriteLine(VARIABLE.Telefonnummer.ToString() + " " + VARIABLE.TelefonnummerType + " " + VARIABLE.TelefonSelskab);
+            }
+
         }
     }
 }

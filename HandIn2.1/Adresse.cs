@@ -28,6 +28,7 @@ namespace HandIn2._1
 
         public virtual ByPostnummer ByPostnummer { get; set; }
 
+
         public virtual ref List<Person> Persons
         {
             get { return ref _persons; }

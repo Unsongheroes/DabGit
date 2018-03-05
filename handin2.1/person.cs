@@ -73,7 +73,12 @@ namespace HandIn2._1
 
         public void print()
         {
+            if(_mellemnavn == "")
             Console.WriteLine(_fornavn + " " + _efternavn );
+            else
+            {
+                Console.WriteLine(_fornavn + " " + _mellemnavn + " " + _efternavn);
+            }
         }
     }
 }

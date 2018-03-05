@@ -25,6 +25,7 @@ namespace HandIn2._1.Application
             Console.WriteLine("Tilføjelse af 4 adresser til postnummer via aarhus.printAdresses();:");
             aarhus.printAdresses();
             checkpoint = Console.ReadKey();
+            Console.WriteLine();
 
             Console.WriteLine("Tilføjer nyt telefonnummer samt en enkelt person til adresse Silkeborgvej 22:");
             TelefonNummer JensArbejd = new TelefonNummer(12345678,"Arbejd", "Telia");
@@ -34,6 +35,7 @@ namespace HandIn2._1.Application
             Jens.print();
             Jens.printPhone();
             checkpoint = Console.ReadKey();
+            Console.WriteLine();
 
             Console.WriteLine("Tilføjer 3 personer til adresse Silkeborgvej 22:");
 
@@ -47,13 +49,28 @@ namespace HandIn2._1.Application
             ad1.PrintAdress();
             Console.WriteLine("Adressen indeholder følgende personer via ad1.PrintPersons():");
             ad1.PrintPersons();
+            Console.WriteLine();
 
             checkpoint = Console.ReadKey();
+            Console.WriteLine();
+
             Console.WriteLine("Ændring af Jens' efternavn til Larsen.");
             Jens.Efternavn("Larsen");
             Console.WriteLine("Adressen indeholder følgende personer via ad1.PrintPersons():");
             ad1.PrintPersons();
 
+            checkpoint = Console.ReadKey();
+
+            Console.WriteLine();
+
+            Console.WriteLine("Følgende er printet fra joint klassen: ");
+            foreach (var VARIABLE in JoinPersonAdresse.PersonAdresses)
+            {
+                VARIABLE.Print();
+                Console.WriteLine();
+            }
+
+            checkpoint = Console.ReadKey();
 
 
 

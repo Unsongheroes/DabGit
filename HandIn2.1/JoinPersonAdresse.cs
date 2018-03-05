@@ -8,15 +8,23 @@ namespace HandIn2._1
 {
     public static class JoinPersonAdresse
     {
-        public static List<item> PersonAdresses = new List<item>();
+        public static List<Item> PersonAdresses = new List<Item>();
     }
 
-    public class item
+    public class Item
     {
-        public string type { get; set; }
+        public string Type { get; set; }
 
-        public Person person { get; set; }
+        public Person Person { get; set; }
 
-        public Adresse adresse { get; set; }
+        public Adresse Adresse { get; set; }
+
+        public void Print()
+        {
+            Console.Write("Person: ");
+            Person.print();
+            Console.Write("Adresse: ");
+            Adresse.PrintAdress();
+        }
     }
 }

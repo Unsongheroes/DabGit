@@ -69,10 +69,10 @@ namespace HandIn2._1
 
         public void addAddress(Adresse adress, string type)
         {
-            item tmp = new item();
-            tmp.adresse = adress;
-            tmp.person = this;
-            tmp.type = type;
+            Item tmp = new Item();
+            tmp.Adresse = adress;
+            tmp.Person = this;
+            tmp.Type = type;
 
 
             JoinPersonAdresse.PersonAdresses.Add(tmp);

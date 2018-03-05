@@ -74,10 +74,8 @@ namespace HandIn2._1
             tmp.person = this;
             tmp.type = type;
 
-
             JoinPersonAdresse.PersonAdresses.Add(tmp);
             _adresses.Add(adress);
-            adress.Persons.Add(this);
         }
 
         public void print()
@@ -88,15 +86,6 @@ namespace HandIn2._1
             {
                 Console.WriteLine(_fornavn + " " + _mellemnavn + " " + _efternavn);
             }
-        }
-
-        public void printPhone()
-        {
-            foreach (var VARIABLE in TelefonNumre)
-            {
-                Console.WriteLine(VARIABLE.Telefonnummer.ToString() + " " + VARIABLE.TelefonnummerType + " " + VARIABLE.TelefonSelskab);
-            }
-
         }
     }
 }

@@ -12,11 +12,17 @@ namespace HandIn2._1.Application
         {
 
             ByPostnummer aarhus = new ByPostnummer(8000, "Aarhus", "Denmark");
+            Console.WriteLine("Empty postnummer::");
+            aarhus.printAdresses();
+
+
             Adresse ad1 = new Adresse("Silkeborgvej", 22, aarhus,"Hjem");
             Adresse ad2 = new Adresse("Silkeborgvej", 23, aarhus, "Hjem");
             Adresse ad3 = new Adresse("Silkeborgvej", 24, aarhus, "Hjem");
             Adresse ad4 = new Adresse("Silkeborgvej", 25, aarhus, "Hjem");
 
+            Console.WriteLine("After adding 4 adresses: ");
+            aarhus.printAdresses();
 
             TelefonNummer JensArbejd = new TelefonNummer(12345678,"Arbejd", "Telia");
             Person Jens = new Person(11111900, "Jens", "Poulsen", JensArbejd, "Kollega","jens@gmail.com", "Peter");

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HandIn2._1
 {
     public class ByPostnummer
     {
+        
         private int _postnummer;
+
         private string _byNavn;
         private string _land;
         
@@ -13,15 +16,18 @@ namespace HandIn2._1
         public ByPostnummer(int postnummer,string byNavn,string land)
         {
             Adresses = new List<Adresse>();
-            PostNummer(postnummer);
+            PostNummer = postnummer;
             ByNavn(byNavn);
             Land(land);
         }
 
-        public int PostNummer(int postnummer)
+        [Key]
+        public int PostNummer
         {
-            return _postnummer = postnummer;
+            get => _postnummer;
+            set => _postnummer = value;
         }
+
 
         public string ByNavn(string bynavn)
         {

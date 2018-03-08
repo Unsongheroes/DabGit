@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HandIn2._1
 {
     public class Adresse
     {
-        private string _vejnavn { get; set; }
+        [Key]
+        public string _vejnavn { get; set; }
         private int _husnummer { get; set; }
         private string _type { get; set; }
         private List<Person> _persons;

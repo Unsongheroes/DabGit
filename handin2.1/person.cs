@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace HandIn2._1
 {
     public class Person
     {
+       
         private int _cpr;
         private string _fornavn;
         private string _mellemnavn;
@@ -21,7 +23,7 @@ namespace HandIn2._1
             _adresses = new List<Adresse>();
             TelefonNumre = new List<TelefonNummer>();
             addAddress(adresse, "primær");
-            PersonId(cpr);
+            PersonId = cpr;
             Fornavn(fornavn);
             Mellemnavn(mellemnavn);
             Efternavn(efternavn);
@@ -30,9 +32,14 @@ namespace HandIn2._1
             TelefonNumre.Add(tlfNummer);
             
         }
-        public int PersonId(int cpr)
+        [Key]
+        public int PersonId
         {
-            return _cpr = cpr;
+            get => _cpr;
+            set
+            {
+                if (value <= 0) throw new ArgumentOutOfRangeException(nameof(value));
+            }
         }
 
         public string Fornavn(string fornavn)

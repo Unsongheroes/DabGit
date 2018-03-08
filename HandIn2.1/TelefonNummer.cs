@@ -1,4 +1,6 @@
-﻿namespace HandIn2._1
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HandIn2._1
 {
     public class TelefonNummer
     {
@@ -9,7 +11,7 @@
             TelefonnummerType = type;
             TelefonSelskab = TelefonSelskab;
         }
-
+        [Key]
         public int Telefonnummer { get; set; }
 
         public string TelefonnummerType { get; set; }

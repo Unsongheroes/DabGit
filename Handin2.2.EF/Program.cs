@@ -8,6 +8,6 @@ namespace Handin2._2.EF
 {
     class Program
     {
-        
+     
     }
 }

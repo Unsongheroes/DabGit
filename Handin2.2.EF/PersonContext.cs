@@ -21,5 +21,7 @@ namespace Handin2._2.EF
         public DbSet<ByPostNummer> ByPostnummers { get; set; }
 
         public DbSet<TelefonNummer> TelefonNummers { get; set; }
+
+      
     }
 }

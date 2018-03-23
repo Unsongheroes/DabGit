@@ -27,7 +27,7 @@ namespace Handin2._2.EF.Application
             Pers.Type = "Primær";
             Pers.Persons.Add(Per);
             Aarhus.Adresses.Add(Pers);
-            Per.Cpr = 32;
+            
             Per.EfterNavn = "Andersen";
             Per.PersonType = "CEO";
             Pers.Persons.Add(Per);
@@ -35,12 +35,16 @@ namespace Handin2._2.EF.Application
 
             using (var unitOfWork = new UnitOfWork.UnitOfWork(new PersonContext()))
             {
-                unitOfWork.Persons.Add(Per);
+                //unitOfWork.Dispose();
+                //unitOfWork.Persons.Add(Per);
                 
                 var person = unitOfWork.Persons.Get(1);
-
+                person.Fornavn = "Per";
                 var persons = unitOfWork.Persons.GetPersonsByLastName(1);
-                Console.WriteLine(person);
+
+                var outperson = persons.ToString();
+
+                Console.WriteLine(outperson);
                 unitOfWork.Complete();
             }
         }

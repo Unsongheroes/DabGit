@@ -20,8 +20,13 @@ namespace Handin2._2.EF.UnitOfWork
 
         public void Dispose()
         {
-            _context.Dispose();
+            
+            _context.Dispose(true);
+            
+
         }
+
+
 
         public IPersonRepository Persons { get; }
         public int Complete()

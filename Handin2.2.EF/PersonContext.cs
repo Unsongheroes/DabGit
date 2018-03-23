@@ -9,9 +9,9 @@ namespace Handin2._2.EF
 {
     public class PersonContext : DbContext
     {
-        public PersonContext() : base("DefaultConnection")
+        public PersonContext() : base("name=HandIn2EF")
         {
-            Configuration.LazyLoadingEnabled = false;
+            
         }
 
         public DbSet<Person> Persons { get; set; }

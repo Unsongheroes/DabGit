@@ -16,7 +16,15 @@ namespace Handin2._2.EF
         public string EfterNavn { get; set; }
         public string PersonType { get; set; }
         public string Email { get; set; }
-        public virtual List<Adresse> Adresses { get; set; }
+        public List<Adresse> Adresses { get; set; }
+        public List<TelefonNummer> TelefonNummers { get; set; }
+
+        
+        public Person()
+        {
+            Adresses = new List<Adresse>();
+            TelefonNummers = new List<TelefonNummer>();
+        }
 
     }
 
@@ -26,8 +34,14 @@ namespace Handin2._2.EF
         public string VejNavn { get; set; }
         public string Type { get; set; } //tjek kommentar fra hand_in 2.1 skal dette undlades?
         public int Husnummer { get; set; }
-        public virtual List<Person> Persons { get; set; }
-        public virtual ByPostNummer ByPostNummer { get; set; }
+        public List<Person> Persons { get; set; }
+        public ByPostNummer ByPostNummer { get; set; }
+
+        public Adresse()
+        {
+            Persons = new List<Person>();
+            ByPostNummer = new ByPostNummer();
+        }
 
     }
 
@@ -38,6 +52,11 @@ namespace Handin2._2.EF
         public string TelefonnummerType { get; set; }
         public string TelefonSelskab { get; set; }
         public virtual Person Person { get; set; }
+
+        public TelefonNummer()
+        {
+            Person = new Person();
+        }
     }
 
     public class ByPostNummer
@@ -46,7 +65,13 @@ namespace Handin2._2.EF
         public int Postnummer { get; set; }
         public string ByNavn { get; set; }
         public string Land { get; set; }
-        public virtual List<Adresse> Adresses { get; set; }
+        public List<Adresse> Adresses { get; set; }
+
+        public ByPostNummer()
+        {
+            Adresses = new List<Adresse>();
+        }
+
     }
 
     /*

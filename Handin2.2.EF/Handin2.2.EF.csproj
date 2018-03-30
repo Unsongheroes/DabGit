@@ -60,11 +60,18 @@
     <Compile Include="Migrations\201803230841354_Contructors.Designer.cs">
       <DependentUpon>201803230841354_Contructors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803301300320_join.cs" />
+    <Compile Include="Migrations\201803301300320_join.Designer.cs">
+      <DependentUpon>201803301300320_join.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803301722429_DetBestemmerDuBare.cs" />
+    <Compile Include="Migrations\201803301722429_DetBestemmerDuBare.Designer.cs">
+      <DependentUpon>201803301722429_DetBestemmerDuBare.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PersonContext.cs" />
     <Compile Include="PersonKatotek.cs" />
     <Compile Include="Repositories\PersonRepository.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
@@ -76,6 +83,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803230841354_Contructors.resx">
       <DependentUpon>201803230841354_Contructors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301300320_join.resx">
+      <DependentUpon>201803301300320_join.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301722429_DetBestemmerDuBare.resx">
+      <DependentUpon>201803301722429_DetBestemmerDuBare.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

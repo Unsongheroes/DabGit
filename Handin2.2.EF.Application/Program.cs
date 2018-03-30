@@ -13,37 +13,69 @@ namespace Handin2._2.EF.Application
 
 
 
-            ByPostNummer Aarhus = new ByPostNummer();
-            Aarhus.Postnummer = 8000;
-            Aarhus.ByNavn = "Aarhus";
-            Aarhus.Land = "Denmark";
+            ByPostNummer Aarhus = new ByPostNummer
+            {
+                Postnummer = 8000,
+                ByNavn = "Aarhus",
+                Land = "Denmark"
+            };
 
-            Adresse Pers = new Adresse();
+            Adresse persAdresse = new Adresse
+            {
+                Husnummer = 1,
+                VejNavn = "kildemosevej",
+                ByPostNummer = Aarhus
+               
+            };
 
-            Person Per = new Person();
+            Person per = new Person
+            {
+                Fornavn = "Per",
+                EfterNavn = "Andersen",
+                PersonType = "CEO",
+                MellemNavn = "georh"
+                
+            };
 
-            Pers.Husnummer = 1;
-            Pers.VejNavn = "kildemosevej";
-            Pers.Type = "Primær";
-            Pers.Persons.Add(Per);
-            Aarhus.Adresses.Add(Pers);
-            
-            Per.EfterNavn = "Andersen";
-            Per.PersonType = "CEO";
-            Pers.Persons.Add(Per);
-            Per.Adresses.Add(Pers);
+            TelefonNummer pertlf = new TelefonNummer
+            {
+                TelefonnummerType = "Privat",
+                TelefonSelskab = "TDC"
+            };
+
+            per.TelefonBog.Add(pertlf);
+
+            PersonAdresse personAdresse = new PersonAdresse
+            {
+                Type = "Shit",
+            };
+
+            per.PersonAdresses.Add(personAdresse);
+            persAdresse.PersonAdresses.Add(personAdresse);
+
+         
 
             using (var unitOfWork = new UnitOfWork.UnitOfWork(new PersonContext()))
             {
-                //unitOfWork.Dispose();
-                //unitOfWork.Persons.Add(Per);
-                
-                var person = unitOfWork.Persons.Get(1);
-                person.Fornavn = "Per";
-                var persons = unitOfWork.Persons.GetPersonsByLastName(1);
-                
-                Console.WriteLine(person.EfterNavn);
+                unitOfWork.Dispose();
+
+                unitOfWork.Persons.Add(per);
+
                 unitOfWork.Complete();
+
+                Console.WriteLine("gdaffgas");
+                var person = unitOfWork.Persons.GetPersonsByLastName(1);
+
+                Console.WriteLine(person.First().MellemNavn);
+
+                Console.WriteLine(person.First().TelefonBog.Single().TelefonnummerType);
+
+                Console.WriteLine(per.PersonAdresses.First().Type);
+
+                Console.WriteLine(persAdresse.PersonAdresses.First().Person.MellemNavn);
+
+                var ch = Console.ReadKey();
+
             }
         }
     }

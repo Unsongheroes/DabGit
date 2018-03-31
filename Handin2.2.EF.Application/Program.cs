@@ -24,8 +24,9 @@ namespace Handin2._2.EF.Application
             {
                 Husnummer = 1,
                 VejNavn = "kildemosevej",
-                ByPostNummer = Aarhus
-               
+                ByPostNummer = Aarhus,
+                PersonAdresses = new List<PersonAdresse>()
+
             };
 
             Person per = new Person
@@ -33,8 +34,16 @@ namespace Handin2._2.EF.Application
                 Fornavn = "Per",
                 EfterNavn = "Andersen",
                 PersonType = "CEO",
-                MellemNavn = "georh"
+                MellemNavn = "georh",
+                PersonAdresses = new List<PersonAdresse>()
                 
+            };
+
+            PersonAdresse personAdresse = new PersonAdresse
+            {
+                Type = "Shit",
+                Person = per,
+                Adresse = persAdresse
             };
 
             TelefonNummer pertlf = new TelefonNummer
@@ -43,17 +52,14 @@ namespace Handin2._2.EF.Application
                 TelefonSelskab = "TDC"
             };
 
+
+
             per.TelefonBog.Add(pertlf);
 
-            PersonAdresse personAdresse = new PersonAdresse
-            {
-                Type = "Shit",
-            };
-
             per.PersonAdresses.Add(personAdresse);
-            persAdresse.PersonAdresses.Add(personAdresse);
+           
+            
 
-         
 
             using (var unitOfWork = new UnitOfWork.UnitOfWork(new PersonContext()))
             {
@@ -64,6 +70,8 @@ namespace Handin2._2.EF.Application
                 unitOfWork.Complete();
 
                 Console.WriteLine("gdaffgas");
+
+
                 var person = unitOfWork.Persons.GetPersonsByLastName(1);
 
                 Console.WriteLine(person.First().MellemNavn);
@@ -71,9 +79,11 @@ namespace Handin2._2.EF.Application
                 Console.WriteLine(person.First().TelefonBog.Single().TelefonnummerType);
 
                 Console.WriteLine(per.PersonAdresses.First().Type);
+                Console.WriteLine(per.PersonAdresses.First().Person.MellemNavn);
+                Console.WriteLine(per.PersonAdresses.First().Adresse.VejNavn);
 
                 Console.WriteLine(persAdresse.PersonAdresses.First().Person.MellemNavn);
-
+                Console.WriteLine(persAdresse.PersonAdresses.First().Adresse.VejNavn);
                 var ch = Console.ReadKey();
 
             }

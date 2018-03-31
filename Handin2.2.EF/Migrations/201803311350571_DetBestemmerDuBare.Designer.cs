@@ -13,12 +13,12 @@ namespace Handin2._2.EF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201803301722429_DetBestemmerDuBare"; }
+            get { return "201803311350571_DetBestemmerDuBare"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

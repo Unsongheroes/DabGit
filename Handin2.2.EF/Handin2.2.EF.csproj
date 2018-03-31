@@ -64,9 +64,9 @@
     <Compile Include="Migrations\201803301300320_join.Designer.cs">
       <DependentUpon>201803301300320_join.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803301722429_DetBestemmerDuBare.cs" />
-    <Compile Include="Migrations\201803301722429_DetBestemmerDuBare.Designer.cs">
-      <DependentUpon>201803301722429_DetBestemmerDuBare.cs</DependentUpon>
+    <Compile Include="Migrations\201803311350571_DetBestemmerDuBare.cs" />
+    <Compile Include="Migrations\201803311350571_DetBestemmerDuBare.Designer.cs">
+      <DependentUpon>201803311350571_DetBestemmerDuBare.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PersonContext.cs" />
@@ -87,8 +87,8 @@
     <EmbeddedResource Include="Migrations\201803301300320_join.resx">
       <DependentUpon>201803301300320_join.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803301722429_DetBestemmerDuBare.resx">
-      <DependentUpon>201803301722429_DetBestemmerDuBare.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803311350571_DetBestemmerDuBare.resx">
+      <DependentUpon>201803311350571_DetBestemmerDuBare.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

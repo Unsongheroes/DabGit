@@ -11,19 +11,47 @@ namespace HandIn2_2_DDB
     class Program
     {
 
-        private const string EndpointUrl = "https://localhost:8081";
-
-        private const string PrimaryKey =
-            "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-
-        private DocumentClient _client;
-
         static void Main(string[] args)
         {
+            var b = new ByPostNummer
+            {
+                ByNavn = "Aarhus",
+                Land = "Danmark",
+                Postnummer = 8000
+            };
+
+            var a = new Adresse
+            {
+                ByPostNummer = b,
+                Husnummer = 1,
+                VejNavn = "Magnoliavej",
+                PersonAdresses = new List<PersonAdresse>()
+            };
+
+            var p = new Person
+            {
+                Cpr = 1,
+                Fornavn = "Patrick",
+                EfterNavn = "Gobbenobber",
+                Email = "123@123.com",
+                MellemNavn = "Truck",
+                PersonType = "Fremmed",
+                PersonAdresses = new List<PersonAdresse>(), 
+                TelefonBog = new List<TelefonNummer>()
+            };
+
+            var tlf = new TelefonNummer {Telefonnummer=01234567, TelefonnummerType="Arbejde", TelefonSelskab="TDC", Person=p};
+
+            p.TelefonBog.Add(tlf);
+
+            var pa = new PersonAdresse {Adresse = a, Person = p, Type = "Hjem"};
+
+            p.PersonAdresses.Add(pa);
+
             try
             {
-                Program p = new Program();
-                p.UniExDemo().Wait();
+                Repository<Person>.CreateDatabase().Wait();
+                Repository<Person>.CreatePersonDocument(p).Wait();
             }
             catch (DocumentClientException de)
             {
@@ -43,15 +71,7 @@ namespace HandIn2_2_DDB
         }
 
 
-        private async Task UniExDemo()
-        {
-            this._client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
+      
 
-            await this._client.CreateDatabaseIfNotExistsAsync(new Database { Id = "PersonKatotekDB" });
-
-            await this._client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("PersonKatotekDB"), new DocumentCollection { Id = "PersonKatotek" });
-
-
-        }
     }
 }

@@ -9,15 +9,14 @@ namespace HandIn2_2_DDB
 {
     public class Person
     {
-        [JsonProperty(PropertyName = "id")]
         public int Cpr { get; set; }
         public string Fornavn { get; set; }
         public string MellemNavn { get; set; }
         public string EfterNavn { get; set; }
         public string PersonType { get; set; }
         public string Email { get; set; }
-        public TelefonNummer[] TelefonBog { get; set; }
-        public PersonAdresse[] PersonAdresses { get; set; }
+        public List<TelefonNummer> TelefonBog { get; set; }
+        public List<PersonAdresse> PersonAdresses { get; set; }
 
         /*
          * uvidst om der skal være en constructor - dette spørgsmål gælder for alle classerne i denne fil.
@@ -34,7 +33,7 @@ namespace HandIn2_2_DDB
         public int AdresseId { get; set; }
         public string VejNavn { get; set; }
         public int Husnummer { get; set; }
-        public PersonAdresse[] PersonAdresses { get; set; }
+        public List<PersonAdresse> PersonAdresses { get; set; }
         public ByPostNummer ByPostNummer { get; set; }
     }
 
@@ -43,8 +42,8 @@ namespace HandIn2_2_DDB
         public int Telefonnummer { get; set; }
         public string TelefonnummerType { get; set; }
         public string TelefonSelskab { get; set; }
-        public int PersonCpr { get; set; }
-        public Person Person { get; set; }
+
+        
     }
 
     public class ByPostNummer
@@ -54,13 +53,12 @@ namespace HandIn2_2_DDB
         public string Land { get; set; }
     }
 
+    
     public class PersonAdresse
     {
         public int MatchId { get; set; }
         public string Type { get; set; }
-        public int PersonCpr { get; set; }
-        public Person Person { get; set; }
-        public int AdresseId { get; set; }
+
         public Adresse Adresse { get; set; }
     }
 

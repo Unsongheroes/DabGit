@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HandIn2_2_DDB
 {
-    class Repository
+    interface IRepository
     {
+
     }
 }

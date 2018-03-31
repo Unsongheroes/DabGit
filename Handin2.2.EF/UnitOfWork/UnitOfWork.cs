@@ -22,7 +22,12 @@ namespace Handin2._2.EF.UnitOfWork
         {
             var itemsToDelete = Persons.GetAll();
             Persons.RemoveRange(itemsToDelete);
-            
+
+            var itemsToDelete2 = _context.ByPostnummers;
+            _context.ByPostnummers.RemoveRange(itemsToDelete2);
+
+            var itemsToDelete3 = _context.Adresses;
+            _context.Adresses.RemoveRange(itemsToDelete3);
         }
 
         public IPersonRepository Persons {  get; }

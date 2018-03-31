@@ -16,32 +16,33 @@ namespace Handin2._2.EF
         public string EfterNavn { get; set; }
         public string PersonType { get; set; }
         public string Email { get; set; }
-        public List<Adresse> Adresses { get; set; }
-        public List<TelefonNummer> TelefonNummers { get; set; }
 
-        
+        public List<TelefonNummer> TelefonBog { get; set; }
+
+        public List<PersonAdresse> PersonAdresses { get; set; }
+
         public Person()
         {
-            Adresses = new List<Adresse>();
-            TelefonNummers = new List<TelefonNummer>();
+            TelefonBog = new List<TelefonNummer>();
+            PersonAdresses = new List<PersonAdresse>();
         }
-
     }
 
     public class Adresse
     {
         [Key]
         public string VejNavn { get; set; }
-        public string Type { get; set; } //tjek kommentar fra hand_in 2.1 skal dette undlades?
         public int Husnummer { get; set; }
-        public List<Person> Persons { get; set; }
+        
+        public List<PersonAdresse> PersonAdresses { get; set;}
+        
         public ByPostNummer ByPostNummer { get; set; }
 
         public Adresse()
         {
-            Persons = new List<Person>();
-            ByPostNummer = new ByPostNummer();
+            PersonAdresses = new List<PersonAdresse>();
         }
+        
 
     }
 
@@ -51,12 +52,11 @@ namespace Handin2._2.EF
         public int Telefonnummer { get; set; }
         public string TelefonnummerType { get; set; }
         public string TelefonSelskab { get; set; }
-        public virtual Person Person { get; set; }
 
-        public TelefonNummer()
-        {
-            Person = new Person();
-        }
+        public int PersonCPR { get; set; }
+        public Person Person { get; set; }
+
+        
     }
 
     public class ByPostNummer
@@ -65,28 +65,24 @@ namespace Handin2._2.EF
         public int Postnummer { get; set; }
         public string ByNavn { get; set; }
         public string Land { get; set; }
-        public List<Adresse> Adresses { get; set; }
-
-        public ByPostNummer()
-        {
-            Adresses = new List<Adresse>();
-        }
+        
 
     }
+    
 
-    /*
-    Skal dette med i denne opgave, eller kan vi gøre det med lister i persons & adresser, som peger på hinanden?
-    */
-    //public static class JoinPersonAdresse
-    //{
-    //    public static List<Item> PersonAdresses = new List<Item>();
-    //}
+    public class PersonAdresse
+    {
+        [Key]
+        public int MatchId { get; set; }
 
-    //public class Item
-    //{
-    //    [Key]
-    //    public string Type { get; set; }
-    //    public Person Person { get; set; }
-    //    public Adresse Adresse { get; set; }
-    //}
+        public string Type { get; set; }
+
+        public int PersonCpr { get; set; }
+        public Person Person { get; set; }
+
+        public string AdresseNavn { get; set; }
+        public Adresse Adresse { get; set; }
+
+        
+    }
 }

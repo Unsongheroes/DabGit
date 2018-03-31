@@ -22,6 +22,8 @@ namespace Handin2._2.EF
 
         public DbSet<TelefonNummer> TelefonNummers { get; set; }
 
-      
+        public DbSet<PersonAdresse> PersonAdresses { get; set; }
+
+
     }
 }

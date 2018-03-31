@@ -20,15 +20,13 @@ namespace Handin2._2.EF.UnitOfWork
 
         public void Dispose()
         {
+            var itemsToDelete = Persons.GetAll();
+            Persons.RemoveRange(itemsToDelete);
             
-            _context.Dispose(true);
-            
-
         }
 
+        public IPersonRepository Persons {  get; }
 
-
-        public IPersonRepository Persons { get; }
         public int Complete()
         {
             return _context.SaveChanges();

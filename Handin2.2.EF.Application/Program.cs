@@ -25,7 +25,7 @@ namespace Handin2._2.EF.Application
                 Husnummer = 1,
                 VejNavn = "kildemosevej",
                 ByPostNummer = Aarhus,
-                PersonAdresses = new List<PersonAdresse>()
+               
 
             };
 
@@ -35,7 +35,7 @@ namespace Handin2._2.EF.Application
                 EfterNavn = "Andersen",
                 PersonType = "CEO",
                 MellemNavn = "georh",
-                PersonAdresses = new List<PersonAdresse>()
+                
                 
             };
 
@@ -45,7 +45,7 @@ namespace Handin2._2.EF.Application
                 EfterNavn = "Gobbenobber",
                 PersonType = "HouseWife",
                 MellemNavn = "Not",
-                PersonAdresses = new List<PersonAdresse>()
+                
 
             };
 

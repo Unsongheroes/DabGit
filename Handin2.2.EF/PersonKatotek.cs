@@ -25,6 +25,7 @@ namespace Handin2._2.EF
         public Person()
         {
             TelefonBog = new List<TelefonNummer>();
+            PersonAdresses = new List<PersonAdresse>();
         }
     }
 
@@ -42,8 +43,8 @@ namespace Handin2._2.EF
 
         public Adresse()
         {
+            PersonAdresses = new List<PersonAdresse>();
         }
-        
 
     }
 

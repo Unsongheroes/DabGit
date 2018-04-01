@@ -49,6 +49,12 @@ namespace HandIn2_2_DDB
                 }
             }
         }
-        
+
+        public Person FindByJd(string id)
+        {
+           var read = Repository<Person>.GetDocumentAsync(id).Result;
+            return read;
+        }
+
     }
 }

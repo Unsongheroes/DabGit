@@ -73,21 +73,16 @@ namespace HandIn2_2_DDB
 
             try
             {
-                //Repository<Person>.CreateDatabase().Wait();
-                //Repository<Person>.CreateDocumentAsync(p).Wait();
-
-                //var read = Repository<Person>.GetDocumentAsync("12").Result;
-                //Console.WriteLine(read.EfterNavn);
-
-                //var read = Repository<Person>.DeleteDocumentAsync("12");
-
-
-
+                
                 var unitOfWork = new UnitOfWork<Person>();
                 unitOfWork.Add(p1);
-                unitOfWork.Add(p2);
-
                 unitOfWork.Commit();
+
+                var tmp = unitOfWork.FindByJd(p1.Cpr);
+
+                Console.WriteLine(tmp.Email);
+
+                
             }
                 catch (DocumentClientException de)
                 {

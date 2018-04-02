@@ -87,7 +87,7 @@ namespace HandIn2_2_DDB
                 unitOfWork.Add(p1);
                 unitOfWork.Add(p2);
 
-                unitOfWork.Commit();
+               unitOfWork.Commit();
             }
                 catch (DocumentClientException de)
                 {

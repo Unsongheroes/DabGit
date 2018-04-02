@@ -33,7 +33,7 @@ namespace HandIn2_2_DDB
             Repository<Person>.CreateDatabase().Wait();
             using (TransactionScope scope = new TransactionScope())
             {
-                foreach (T item in Changed)
+                foreach (T item in Changed )
                 {
                     Repository<T>.UpdateDocumentAsync(item.Cpr, item).Wait();
                 }

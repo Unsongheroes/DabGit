@@ -10,7 +10,7 @@ namespace HandIn2_2_DDB
 {
     class Program
     {
-
+        #region Objektinitialisering
         static void Main(string[] args)
         {
             var b = new ByPostNummer
@@ -26,6 +26,14 @@ namespace HandIn2_2_DDB
                 ByPostNummer = b,
                 Husnummer = 1,
                 VejNavn = "Magnoliavej"
+            };
+
+            var a2 = new Adresse
+            {
+                AdresseId = "1",
+                ByPostNummer = b,
+                Husnummer = 2,
+                VejNavn = "Strandvejen"
             };
 
             var p1 = new Person
@@ -70,24 +78,70 @@ namespace HandIn2_2_DDB
 
             p2.PersonAdresses.Add(pa2);
 
+            var pa3 = new PersonAdresse { MatchId = "2", Adresse = a2, Person = p1, Type = "Sommerhus" };
 
+            p1.PersonAdresses.Add(pa3);
+
+            #endregion
             try
             {
-                //Repository<Person>.CreateDatabase().Wait();
-                //Repository<Person>.CreateDocumentAsync(p).Wait();
-
-                //var read = Repository<Person>.GetDocumentAsync("12").Result;
-                //Console.WriteLine(read.EfterNavn);
-
-                //var read = Repository<Person>.DeleteDocumentAsync("12");
-
-
-
+                
                 var unitOfWork = new UnitOfWork<Person>();
                 unitOfWork.Add(p1);
                 unitOfWork.Add(p2);
+                unitOfWork.Commit();
 
-               unitOfWork.Commit();
+                Console.WriteLine("Data has been saved to the database");
+
+                var ch = Console.ReadKey();
+
+                Console.WriteLine("Loading person from database:");
+
+                //Variablen person indeholder en person, som er fundet ved brug af det givne id (cpr).
+
+                var person = unitOfWork.FindByJd(p1.Cpr);
+
+                Console.WriteLine("Case 1: Hent 1 person fra databasen og udskriv dennes primære informationer:");
+                //Case 1: Hent 1 person fra databasen og udskriver dennes primære informationer. 
+                Console.WriteLine(person.Fornavn + " " + person.MellemNavn + " " + person.EfterNavn + ", " + person.PersonType);
+
+                ch = Console.ReadKey();
+
+                //Case 2: Hent 1 person fra databasen og udskriv dennes e-mail:
+                Console.WriteLine("Case 2: Hent 1 person fra databasen og udskriv dennes e-mail:");
+                Console.WriteLine(person.Email);
+
+                ch = Console.ReadKey();
+
+                //Case 3: Hent 1 person fra databasen og udskriv dennes tlf-nummer informationer:
+                Console.WriteLine("Case 3: Hent 1 person fra databasen og udskriv dennes tlf-nummer informationer:");
+                string tmp = "Type: " + person.TelefonBog.Single().TelefonnummerType + ", Nummer: " +
+                             person.TelefonBog.Single().Telefonnummer + ", Selskab: " +
+                             person.TelefonBog.Single().TelefonSelskab;
+                Console.WriteLine(tmp);
+
+                ch = Console.ReadKey();
+
+                //Case 4: Hent 1 person fra databasen og udskriv dennes adresse informationer samt by-postnummer informationer
+                Console.WriteLine("Case 4: Hent 1 person fra databasen og udskriv dennes adresse informationer samt by-postnummer informationer");
+                tmp = "AdresseType: " + person.PersonAdresses.First().Type + ", Vejnavn: " + person.PersonAdresses.First().Adresse.VejNavn + ", Husnummer: " + person.PersonAdresses.First().Adresse.Husnummer + ", Postnummer: " + person.PersonAdresses.First().Adresse.ByPostNummer.Postnummer + ", By: " + person.PersonAdresses.First().Adresse.ByPostNummer.ByNavn + ", Land: " + person
+                    .PersonAdresses.First().Adresse.ByPostNummer.Land;
+                Console.WriteLine(tmp);
+
+                ch = Console.ReadKey();
+
+                //Case 5: Hent 1 person fra databasen og udskriv dennes forskellige adressetyper:
+                person.PersonAdresses.GetEnumerator().MoveNext();
+                Console.WriteLine("Case 5: Hent 1 person fra databasen og udskriv dennes forskellige adressetyper:");
+                tmp = "Adresse 1 - Type: " + person.PersonAdresses.First().Type;
+                Console.WriteLine(tmp);
+                tmp = "Adresse 2 - Type: " + person.PersonAdresses.Last().Type;
+                Console.WriteLine(tmp);
+
+                ch = Console.ReadKey();
+                
+
+                
             }
                 catch (DocumentClientException de)
                 {
